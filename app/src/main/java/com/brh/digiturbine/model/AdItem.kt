@@ -1,7 +1,5 @@
 package com.brh.digiturbine.model
 
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty
-
 class AdItem {
     var averageRatingImageURL: String? = null
 var isRandomPick: String? = null

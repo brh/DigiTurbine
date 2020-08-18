@@ -1,12 +1,12 @@
 package com.brh.digiturbine.network
 
-import com.brh.digiturbine.model.AdHolder
 import okhttp3.ResponseBody
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface DTService {
 
+    //default values, can be changed at call time, otherwise the call is simple
     @GET("/getAds")
     suspend fun getItems(@Query("id") id:Int=236,
                          @Query("password") password: String="OVUJ1DJN",

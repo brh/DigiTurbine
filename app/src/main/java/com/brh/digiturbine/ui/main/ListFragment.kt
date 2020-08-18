@@ -1,14 +1,11 @@
 package com.brh.digiturbine.ui.main
 
 import android.net.Uri
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.activity.addCallback
-import androidx.fragment.app.commitNow
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import coil.api.load
 import com.brh.digiturbine.DTApp
@@ -20,7 +17,6 @@ import com.brh.digiturbine.databinding.MainFragmentBinding
 import com.brh.digiturbine.model.AdItem
 import com.google.android.material.snackbar.Snackbar
 import com.list.rados.fast_list.bind
-import java.text.MessageFormat
 import javax.inject.Inject
 
 class ListFragment : Fragment(R.layout.main_fragment) {
@@ -62,9 +58,9 @@ class ListFragment : Fragment(R.layout.main_fragment) {
                     (requireActivity() as MainActivity).showProgress(true)
                 }
                 is State.Content<*> -> {
-                    println("Data Rec'd!!!!")
                     (requireActivity() as MainActivity).showProgress(false)
                     val list =  state.data as List<AdItem>
+                    //make use of lib that makes working with recyclerviews easier
                     binding.rv.bind<AdItem, CardItemBinding>(list).map({vg->
                         CardItemBinding.inflate(layoutInflater, vg, false)},
                         {_,_-> true}
@@ -76,6 +72,8 @@ class ListFragment : Fragment(R.layout.main_fragment) {
 
                         root.setOnClickListener {
                             viewModel.itemSeleted(ad)
+                            //if there is not an active observer to detaiLiveData then we know
+                            //we are not on dual screen (large screen) device
                             if (!viewModel.detailLiveData.hasActiveObservers()) {
                                 (requireActivity() as MainActivity).showDetail()
                             }
@@ -84,7 +82,6 @@ class ListFragment : Fragment(R.layout.main_fragment) {
                 }
             }
         }
-        viewModel.fetchData()
     }
 
 }

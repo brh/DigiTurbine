@@ -1,16 +1,10 @@
 package com.brh.digiturbine
 
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.AttributeSet
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentContainerView
 import androidx.fragment.app.commit
-import androidx.fragment.app.commitNow
-import androidx.fragment.app.transaction
-import com.brh.digiturbine.databinding.MainActivityBinding
 import com.brh.digiturbine.ui.main.DetailFragment
 import com.brh.digiturbine.ui.main.ListFragment
 
@@ -23,8 +17,8 @@ class MainActivity : AppCompatActivity(R.layout.main_activity) {
         setContentView(R.layout.main_activity)
         viewProgress = findViewById(R.id.progress)
 
+        //if detailView is present then we know this is dual screen mode
         val detailView: FragmentContainerView? = findViewById(R.id.fcv_detail)
-        val listView: FragmentContainerView = findViewById(R.id.fcv_list)
 
         if (savedInstanceState == null) {
             supportFragmentManager.commit {

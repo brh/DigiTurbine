@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import androidx.viewpager2.widget.ViewPager2
 
+//RecyclerView library that I have contributed too, This is a version that
+//I have not submitted that makes use of viewBinder
+
 /**
  * Created by Radoslav Yankov on 29.06.2018
  * radoslavyankov@gmail.com
